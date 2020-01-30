@@ -47,10 +47,21 @@
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="./table.html">
+                         <a class="nav-link dropdown-toggle" href="./table.html" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
                              <i class="fa fa-usd"></i>
-                             <p>Donate</p>
+                             <p>Track</p>
                          </a>
+
+                         <ul class="collapse" id="collapseExample" style="list-style: none;">
+                            <li><a class="nav-link" href="./user.html">
+                                <p>Track Alumni</p>
+                            </a></li>
+                            <li><a class="nav-link" href="./hello.html">
+                                <p>Track Student</p>
+                            </a></li>
+                          </ul>
+                            
+                        </li>
                      </li>
                      <li>
                          <a class="nav-link" href="./typography.html">
@@ -61,19 +72,19 @@
                      <li>
                          <a class="nav-link" href="./icons.html">
                              <i class="fa fa-user"></i>
-                             <p>Requests</p>
+                             <p>Manage Funds</p>
                          </a>
                      </li>
                      <li>
                          <a class="nav-link" href="./maps.html">
                              <i class="fa fa-briefcase"></i>
-                             <p>Job</p>
+                             <p>Jobs</p>
                          </a>
                      </li>
                      <li>
                          <a class="nav-link" href="./notifications.html">
                              <i class="fa fa-calendar"></i>
-                             <p>Events</p>
+                             <p>Events / Workshos</p>
                          </a>
                      </li>
                      
@@ -141,6 +152,10 @@
          demo.showNotification();
  
      });
+
+     function openTrack() {
+         document.getElementsById("activitymenu").display="block";
+     }
  </script>
  
  </html>
