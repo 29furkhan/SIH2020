@@ -66,7 +66,7 @@
                                 &nbsp
                               </td>
                               <td>
-                                <select id='collegeselect' style="width:20rem;height:3rem;">
+                                <select id='collegeselect'  onchange="getUserType(id);" style="width:20rem;height:3rem;">
                                   <option selected disabled>Select University/College</option> 
                                   <option value="srt">SRTMU, Nanded</option>
                                   <option value="sggs">SGGS</option>
@@ -75,7 +75,17 @@
                                 </select>
                               </td>
                             </tr>  
-                            
+                            <tr id='PRN_NO' style="display: none;">
+                              <td>
+                                <b id="">PRN NO. </b>
+                              </td>
+                              <td>
+                                &nbsp
+                              </td>
+                              <td>
+                                <input type="text" style="width:20rem;height:3rem;">
+                              </td>
+                            </tr>
                             <tr id='dircollegeselect' style="display: none;">
                                 <td>
                                   <b id="">SELECT COLLEGE</b>
@@ -84,7 +94,7 @@
                                   &nbsp
                                 </td>
                                 <td>
-                                  <select id='collegeselect' style="width:20rem;height:3rem;">
+                                  <select id='collegeselect'  onchange="getUserType(id);"style="width:20rem;height:3rem;">
                                     <option selected disabled>Select College</option> 
                                     <option value="sggs">SGGS</option>
                                     <option value="coep">COEP</option>
@@ -92,6 +102,7 @@
                                   </select>
                                 </td>
                               </tr>  
+                              
                             
                     </table>
                     <br>
