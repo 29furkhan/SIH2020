@@ -1,0 +1,10 @@
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+.shadowforcards{
+    /* box-shadow: 5px 5px lightgray; */
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
