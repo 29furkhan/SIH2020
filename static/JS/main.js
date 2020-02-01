@@ -1,3 +1,7 @@
+function clickFilters(id){
+    document.getElementById(id).style.display = "block";
+}
+
 function getUserType(type){
     type = document.getElementById(type).value;
 

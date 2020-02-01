@@ -48,6 +48,10 @@ def alumnigoogle():
 @app.route('/student/profile')
 def alumnistudentprofile():
     return render_template("pages/student/studentprofile.html")
+
+@app.route('/student/events')
+def studentEvents():
+    return render_template("pages/student/studentevents.html")
     
 @app.route('/alumni/tablealumni')
 def table():
@@ -56,6 +60,10 @@ def table():
 @app.route('/director/managefunddirector')
 def managefunddirector():
     return render_template("pages/DIR/managefunddirector.html")
+
+@app.route('/director/trackstudent')
+def trackstudents():
+    return render_template("pages/DIR/directortrackstudents.html")
 
 if __name__=='__main__':
     app.run(debug=True)
