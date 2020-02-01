@@ -7,7 +7,6 @@ function getUserType(type){
 
     if(type=="alumni" || type=="student")
     {
-        document.getElementById('PRN_NO').style.display="table-row";
         if(type=="alumni" || type=="student")
         {
             document.getElementById('collegeselecttr').style.display="table-row";
@@ -17,10 +16,7 @@ function getUserType(type){
             document.getElementById('dircollegeselect').style.display="table-row";
             document.getElementById('collegeselecttr').style.display="none";
         }
-        else if(type="DHE"){
-            document.getElementById('userid').style.display="table-row";
-            document.getElementById('password').style.display="table-row";
-        }
+        
     }
 
 }
