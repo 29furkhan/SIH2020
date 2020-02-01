@@ -1,0 +1,117 @@
+<html>
+
+<head>
+  <title>SIH2020</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/static/CSS/styles.css">
+  <script src="/static/JS/main.js"></script>
+  
+  
+</head>
+
+<body>
+	<nav style="font-weight:600;display:flex;justify-content:space-between;background-image: linear-gradient(to right top, #d16ba5, #ca6eb3, #c073c0, #b378cd, #a37ed9, #9883e0, #8b89e7, #7d8eed, #7694f1, #6e9af5, #679ff8, #5fa5fb);">
+		<div style="margin-left:30px;">
+				<a class="navbar-brand" href="#">
+					<img width="18%" src="/static/IMG/logo.png" alt="">
+					<span style="margin-left:10px;font-family:courier new;color:black;">Govt. of GOA</span>
+				</a>
+		</div>
+		
+		<div style="margin-top:40px;	margin-right:40px;">
+			<a href="https://www.facebook.com/mgmcen/" style="text-decoration: none;" target="_blank"><img  src="/static/IMG/fb.png" alt="">	</a>
+      <a href="https://www.facebook.com/mgmcen/" style="text-decoration: none;" target="_blank"><img  style="margin-left:10px;" src="/static/IMG/twitter.png" alt="">	</a>
+      <a href="https://www.facebook.com/mgmcen/" style="text-decoration: none;" target="_blank"><img  style="margin-left:10px;" src="/static/IMG/insta.png" alt="">	</a>
+      <a href="https://www.facebook.com/mgmcen/" style="text-decoration: none;" target="_blank"><img  style="margin-left:10px;" src="/static/IMG/in.png" alt="">	</a>      	
+		</div>
+    </nav>
+    
+    <center>
+         <div style="margin-top:50px;">   
+            <div class="card shadowforcards" style="width:40rem;">
+                    <div class="card-body">
+                      <img style="width:12%;" src="/static/IMG/logo.png"/>
+                      <hr><br>
+                      <table style="border:0px;width:50%;white-space:nowrap;">
+                        <tr>
+                          <td>
+                            <b>LOGIN AS</b>
+                          </td>
+                          <td>
+                            &nbsp
+                          </td>
+                          <td>
+                            <select id="usertype" onchange="getUserType(id);" style="width:20rem;height:3rem;">
+                              <option selected disabled>Select User</option> 
+                              <option value="DHE">Directoate of Higher Education/Vice Chancellor</option>
+                              <option value="DIR">Director</option>
+                              <option value="alumni">Alumni</option>
+                              <option value="student">Student</option>
+                            </select>
+                          </td>
+                        </tr>
+                        
+                        <tr class="brintable"><td>&nbsp</td>
+                        </tr>
+                          <tr id='collegeselecttr' style="display: none;">
+                              <td>
+                                <b id="">SELECT UNIVERSITY/COLLEGE</b>
+                              </td>
+                              <td>
+                                &nbsp
+                              </td>
+                              <td>
+                                <select id='collegeselect'  onchange="getUserType(id);" style="width:20rem;height:3rem;">
+                                <select id='collegeselect' style="width:20rem;height:3rem;">
+                                  <option selected disabled>Select University/College</option> 
+                                  <option value="srt">SRTMU, Nanded</option>
+                                  <option value="sggs">SGGS</option>
+                                  <option value="coep">COEP</option>
+                                  <option value="pccoe">PCCOE</option>
+                                </select>
+                              </td>
+                            </tr>  
+                            <tr id='PRN_NO' style="display: none;">
+                              <td>
+                                <b id="">PRN NO. </b>
+                              </td>
+                              <td>
+                                &nbsp
+                              </td>
+                              <td>
+                                <input type="text" style="width:20rem;height:3rem;">
+                              </td>
+                            </tr>
+                            <tr id='dircollegeselect' style="display: none;">
+                                <td>
+                                  <b id="">SELECT COLLEGE</b>
+                                </td>
+                                <td>
+                                  &nbsp
+                                </td>
+                                <td>
+                                  <select id='collegeselect'  onchange="getUserType(id);"style="width:20rem;height:3rem;">
+                                  <select id='collegeselect' style="width:20rem;height:3rem;">
+                                    <option selected disabled>Select College</option> 
+                                    <option value="sggs">SGGS</option>
+                                    <option value="coep">COEP</option>
+                                    <option value="pccoe">PCCOE</option>
+                                  </select>
+                                </td>
+                              </tr>  
+                            
+                    </table>
+                    <br>
+                    <button style="display: none;" type="submit" class="btn btn-outline-primary">Create</button>
+                  </div>
+            </div>
+        </div>
+    </center>
+
+</body>
+</html>
