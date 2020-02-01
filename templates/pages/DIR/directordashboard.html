@@ -2,6 +2,7 @@
 {% block heading%}
 Dashboard
 {% endblock %}
+
 {% block content %}
 <div class="content">
     <div class="container-fluid">
@@ -35,7 +36,7 @@ Dashboard
                  <a class="dropdown-item" href="#">2017</a>
                </div>
          </div>
-         <button type="button" class="btn btn-primary btn-sm" style="margin-left:5%;padding:10px 35px;font-size:10px;">Apply</button>
+         <button type="button" class="btn btn-primary btn-sm" style="margin-left:5%;">Apply</button>
        </div> 
        <br>
         <div class="row">
@@ -48,7 +49,7 @@ Dashboard
                     </div>
                     <div class="card-body" style="display: flex;justify-content: flex-start;">
                         <img style="margin-top: -11px;" src="/static/IMG/group-chat.png" alt="">
-                        <h4 style="font-weight:600;margin-left: 60%;">10</h4>
+                        <h4 style="font-weight:600;margin-left: 60%;">35</h4>
                     </div>
                 </div>
             </div>
@@ -61,7 +62,7 @@ Dashboard
                     </div>
                     <div class="card-body" style="display: flex;justify-content: flex-start;">
                         <img style="margin-top: -11px;" src="/static/IMG/student (1).png" alt="">
-                        <h4 style="font-weight:600;margin-left: 60%;">10</h4>
+                        <h4 style="font-weight:600;margin-left: 60%;">50</h4>
                     </div>
                 </div>
             </div>
@@ -72,36 +73,103 @@ Dashboard
                     </div>
                     <div class="card-body" style="display: flex;justify-content: flex-start;">
                         <img style="margin-top: -11px;" src="/static/IMG/teacher.png" alt="">
-                        <h4 style="font-weight:600;margin-left: 60%;">10</h4>
+                        <h4 style="font-weight:600;margin-left: 60%;">5</h4>
                     </div>
                 </div>
             </div>
         </div>
       <div class="row">
+        
         <div class="col-md-6">
             <div class="card shadowforcards">
                 <div class="card-header ">
-                    <h4 class="card-title" style="font-weight:300;">No. of Students</h4><hr>
+                    <h4 class="card-title" style="font-weight:300;">No. of Students Associated with Alumni</h4><hr>
                 </div>
-                <div class="card-body" style="display: flex;justify-content: flex-start;">
-                    <img style="margin-top: -11px;" src="/static/IMG/student (1).png" alt="">
-                    <h4 style="font-weight:600;margin-left: 60%;">10</h4>
+                <div class="card-body" style="display: flex;justify-content: space-between;">
+                
+                    <img style="margin-top: -11px;" src="/static/IMG/freedom (1).png" alt="">
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4 style="font-weight:600;">40</h4>
+                    <h4>&nbsp</h4>
+                            
+                        
+                    
+                    
+                    
+                    
+                        
+                    
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card shadowforcards">
                 <div class="card-header ">
-                    <h4 class="card-title" style="font-weight:300;">No. of Sessions</h4><hr>
+                    <h4 class="card-title" style="font-weight:300;">No. of Students Not Associated with Alumni</h4><hr>
                 </div>
-                <div class="card-body" style="display: flex;justify-content: flex-start;">
-                    <img style="margin-top: -11px;" src="/static/IMG/teacher.png" alt="">
-                    <h4 style="font-weight:600;margin-left: 60%;">10</h4>
+                <div class="card-body" style="display: flex;justify-content: space-between;">
+                    <img style="margin-top: -11px;" src="/static/IMG/problem.png" alt="">
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4>&nbsp</h4>
+                    <h4 style="font-weight:600;">10</h4>
+                    <h4>&nbsp</h4>
+                        
+                    
                 </div>
             </div>
         </div>
 
+
       </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="card shadowforcards">
+                <div class="card-header ">
+                    <h4 class="card-title" style="font-weight:300;">Top Five Alumni of the Week <img style="margin-top: -11px;" src="/static/IMG/award.png" alt=""><h4>&nbsp</h4></h4><hr>
+                    
+                </div>
+                
+                <div class="card-body">
+                    <h4>Shweta Dinkale</h4>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:100%">100%</div>
+                    </div>
+                   
+                    
+                    <h4>Ruplai Bhange</h4>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:80%">80%</div>
+                    </div>
+                    
+                    <h4>Prasad Nagthane</h4>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:60%">60%</div>
+                    </div>
+                    
+                    <h4>Prashant Phulari</h4>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:40%">40%</div>
+                    </div>
+                    
+                    <h4>Furkhan Shaikh</h4>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:20%">20%</div>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+        
+     </div>
     </div>
+
 </div>
 {% endblock %}
