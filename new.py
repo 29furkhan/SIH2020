@@ -108,6 +108,14 @@ def table():
 def managefunddirector():
     return render_template("pages/DIR/managefunddirector.html")
 
+@app.route('/director/authentication')
+def authentication():
+    return render_template("pages/DIR/authentication.html")
+
+@app.route('/director/events')
+def events():
+    return render_template("pages/DIR/events.html")
+
 @app.route('/director/trackstudent')
 def trackstudents():
     return render_template("pages/DIR/directortrackstudents.html")
