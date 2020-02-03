@@ -2,35 +2,22 @@
 
  <html lang="en">
  
- 
-    <head>
-
-        <!-- <style>
-        .inner-li:hover,
-            .inner-li:focus{
-                background-color: rgb(218, 172, 252);
-            }
-                
-        </style> -->
-         <meta charset="utf-8" />
-         <link rel="apple-touch-icon" sizes="76x76" href="/static/IMG/apple-icon.png">
-         <link rel="icon" type="image/png" href="/static/IMG/favicon.ico">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-         <title>Govt. of GOA</title>
-         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-         <!--     Fonts and icons     -->
-         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css"/> -->
-         <!-- CSS Files -->
-         <link href="/static/CSS/bootstrap.min.css" rel="stylesheet" />
-         <link href="/static/CSS/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-         <!-- CSS Just for demo purpose, don't include it in your project -->
-         <link href="/static/CSS/demo.css" rel="stylesheet" />
-         <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
-         <link href="/static/CSS/styles.css" rel="stylesheet" />
-         
-     </head>
+ <head>
+     <meta charset="utf-8" />
+     <link rel="apple-touch-icon" sizes="76x76" href="/static/IMG/apple-icon.png">
+     <link rel="icon" type="image/png" href="/static/IMG/favicon-32x32.png">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+     <title>Govt. of GOA</title>
+     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+     <!--     Fonts and icons     -->
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+     <!-- CSS Files -->
+     <link href="/static/CSS/bootstrap.min.css" rel="stylesheet" />
+     <link href="/static/CSS/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+     <!-- CSS Just for demo purpose, don't include it in your project -->
+     <link href="/static/CSS/demo.css" rel="stylesheet" />
+ </head>
  
  <body>
      <div class="wrapper">
@@ -42,39 +29,41 @@
      -->
              <div class="sidebar-wrapper">
                  <div class="logo">
-                     <a href="http://www.creative-tim.com" class="simple-text">
-                         DHE Portal
+                     <a href="#" class="simple-text">
+                         ALUMNI PORTAL
                      </a>
                  </div>
-                 <ul class="nav">
-                     <li class="nav-item ">
-                         <a class="nav-link" href="/dhe/dashboard">
+                 <ul class="nav" style="pointer-events: none;opacity: 0.6;">
+                     <li class="nav-item">
+                         <a class="nav-link" href="/alumni/dashboard">
                              <i class="fa fa-tachometer"></i>
                              <p>Dashboard</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href="/alumni/profile">
                              <i class="fa fa-user"></i>
                              <p>User Profile</p>
                          </a>
                      </li>
                      <li>
-                        <a class="nav-link " href="/DHE/trackalumni"  >
-                            <i class="fa fa-usd"></i>
-                            <p>Track Alumni</p>
-                        </a>
-
-                        
-                    </li>
-                     
+                         <a class="nav-link" href="/alumni/donation">
+                             <i class="fa fa-usd"></i>
+                             <p>Donate</p>
+                         </a>
+                     </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href="/alumni/tablealumni">
                              <i class="fa fa-tasks"></i>
                              <p>Schedules</p>
                          </a>
                      </li>
-                     
+                     <li>
+                         <a class="nav-link" href="/notfound">
+                             <i class="fa fa-user"></i>
+                             <p>Requests</p>
+                         </a>
+                     </li>
                      <li>
                          <a class="nav-link" href="/notfound">
                              <i class="fa fa-briefcase"></i>
@@ -84,7 +73,7 @@
                      <li>
                          <a class="nav-link" href="/notfound">
                              <i class="fa fa-calendar"></i>
-                             <p>Events / Workshops</p>
+                             <p>Events</p>
                          </a>
                      </li>
                      
@@ -94,10 +83,11 @@
          <div class="main-panel">
              <!-- Navbar -->
              <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <a class="navbar-brand" href="#pablo"> {% block heading %}{% endblock %} </a>
                  <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> {% block heading %}{% endblock %} </a> 
                      <div class="collapse navbar-collapse justify-content-end" id="navigation">
                          <ul class="navbar-nav ml-auto">
+                             
                              <li class="nav-item">
                                  <a class="nav-link" href="/logout">
                                      <span class="no-icon">Log out</span>
@@ -112,7 +102,7 @@
              <!-- Main Content Starts Here -->
              {% block content %}{% endblock %}
              <!-- Main Contents Ends Here -->
-             <!-- <footer class="footer" style="bottom: 0;width: 100%; position: absolute;">
+             <!-- <footer class="footer">
                  <div class="container-fluid">
                      <nav>
                          <p class="copyright text-center">
@@ -145,9 +135,6 @@
  <script src="/static/JS/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
  <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
  <script src="/static/JS/demo.js"></script>
- <script src="/static/JS/main.js"></script>
- 
-
  <script type="text/javascript">
      $(document).ready(function() {
          // Javascript method's body can be found in assets/js/demos.js

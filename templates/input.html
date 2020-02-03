@@ -35,14 +35,17 @@
          <div style="margin-top:50px;">   
             <div class="card shadowforcards" style="width:40rem;">
                   <div class="card-body">
-                    <div class="errors">
-                      {% for message in get_flashed_messages() %}
-                        <div class=flash>{{ message }}</div>
-                      {% endfor %}
-                    </div>
                       <img style="width:12%;" src="/static/IMG/logo.png"/>
                       <hr><br>
-                      <form action="/" method="post">
+                      {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <div class="alert alert-danger">
+                          {{ messages[0] }}
+                        </div>
+                      {% endif %}
+                      {% endwith %}
+                      
+                      <form action="/" method="POST">
                         <div style="border:0px;display:flex;justify-content: space-between;white-space:nowrap;">
                           <div>
                             <b>LOGIN AS</b>
@@ -68,9 +71,8 @@
                           <div>
                             <select id="universityselect" name="universityselect" onchange="getUniversityOrCollege(id);" style="width:20rem;height:3rem;">
                               <option selected disabled >Select University/ College</option> 
-                              <option value="SRTMU">SRTMU, Nanded</option>
-                              <option value="">SGGS, Nanded</option>
-                              <option value="">MIT Aurangabad</option>
+                              <option value="SRTMUN">SRTMUN</option>
+                              <option value="Shri Guru Gobind Singji College of Engineering, Nanded">Shri Guru Gobind Singji College of Engineering, Nanded</option>
                             </select>
                           </div>
                         </div>
@@ -83,9 +85,9 @@
                           <div>
                             <select id="clgselect" name="clgselect" onchange="getCollege(id);" style="width:20rem;height:3rem;">
                               <option selected disabled>Select College</option> 
-                              <option value="">MGM's College of Engineering</option>
-                              <option value="">Gramin College of Engineering, Nanded</option>
-                              <option value="">Matroshi Pratishthan, Nanded</option>
+                              <option value="MGM's College of Engineering">MGM's College of Engineering</option>
+                              <option value="Gramin College of Engineering, Nanded">Gramin College of Engineering, Nanded</option>
+                              <option value="Matroshi Pratishthan, Nanded">Matroshi Pratishthan, Nanded</option>
                             </select>
                           </div>
                         </div>

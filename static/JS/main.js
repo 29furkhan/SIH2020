@@ -27,7 +27,7 @@ function getUserType(id){
         document.getElementById("password").style.display="none";
         document.getElementById("loginbtn").style.display="none";
     }
-    else if(type=="alumni"){
+    else if(type=="alumni" || type=="student"){
         document.getElementById("university").style.display="flex";
         
         
@@ -42,7 +42,7 @@ function getUserType(id){
 
 function getUniversityOrCollege(id){
     value = document.getElementById(id).value   ;
-    if(value=="SRTMU"){
+    if(value=="SRTMUN"){
         // alert("University");
         document.getElementById("clg").style.display="flex";
         
