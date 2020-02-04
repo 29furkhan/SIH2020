@@ -7,6 +7,7 @@ from flask import flash
 from flask_login import LoginManager
 from flask_login import UserMixin
 from flask_login import login_user
+from flask import session
 
 app = Flask(__name__)
  
@@ -18,6 +19,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
+# session=Session()
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -102,6 +104,8 @@ def trackstudents1():
 @app.route('/DHE/trackalumni')
 @login_required
 def trackalumni1():
+    # session['key']="DHE"
+    print("DHE")
     alumni=AlumniTrack.query.all()
     return render_template("pages/DHE/dhetrackalumni.html",alumni=alumni)
 
@@ -176,6 +180,8 @@ def login():
             flash("Invalid Email or Password")
             return redirect(url_for('login'))
         login_user(user)
+        print(login_user(user))
+        session['key']="DHE"
         return redirect(url_for("trackalumni1"))
     # Director Login    
     elif usertype=="DIR":
@@ -186,6 +192,7 @@ def login():
             flash("Invalid Email or Password")
             return redirect(url_for('login'))
         login_user(user)
+        session['key']="Director"
         return redirect(url_for("dashboarddirector"))
 
     # Alumni
@@ -253,6 +260,7 @@ def dashboardalumnidisabled():
 @app.route('/director/dashboard')
 @login_required
 def dashboarddirector():
+    # session['key']="Director"
     return render_template("pages/DIR/directordashboard.html")
     
 

@@ -1,3 +1,4 @@
+{% if session.get('key') == "DHE" %}
 {% extends "layouts/DHE/commonlayoutdhe.html" %}
 {% block heading %}
 Track Alumni
@@ -21,7 +22,7 @@ Track Alumni
                             </div>
                         </div>
                     </div><br>
-                    <div class="card-body " style="display:flex;justify-content: space-between;margin-left: 3%;">
+                    <div class="card-body " style="display:flex;justify-content: space-between;margin-left: 5%;">
                         <form class="row" action="/DHE/trackalumni" method="POST">
                         <div >
                             <select name="college"  style="width:25rem;height:2rem;margin-right: 20px;">
@@ -84,3 +85,7 @@ Track Alumni
 
 <!-- Search Box End -->  
 {% endblock %}
+
+{% else %}
+<center><h1>You are Not an Authorized User !</h1></center>
+{% endif %}
