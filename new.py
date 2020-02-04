@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask,session
+from functools import wraps
 from flask import render_template,request,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required
@@ -311,7 +312,7 @@ def authentication():
     return render_template("pages/DIR/authentication.html")
 
     
-@app.route("/logout")
+@app.route("/logout/")
 @login_required
 def logout():
     logout_user()
@@ -336,7 +337,6 @@ def reject():
         user.type="student"
         db.session.commit()
         return "Request Rejected"
-
 
 
 if __name__=='__main__':

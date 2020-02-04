@@ -86,25 +86,25 @@
                         </li>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href={{ url_for('notfound') }}>
                              <i class="fa fa-tasks"></i>
                              <p>Schedules</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/director/managefunddirector">
+                         <a class="nav-link" href={{ url_for('managefunddirector') }}>
                              <i class="fa fa-usd"></i>
                              <p>Manage Funds</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href={{ url_for('notfound') }}>
                              <i class="fa fa-briefcase"></i>
                              <p>Jobs</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href={{ url_for('notfound') }}>
                              <i class="fa fa-calendar"></i>
                              <p>Events</p>
                          </a>
@@ -122,7 +122,7 @@
                      <div class="collapse navbar-collapse justify-content-end" id="navigation">
                          <ul class="navbar-nav ml-auto">
                              <li class="nav-item">
-                                 <a class="nav-link" href="/logout">
+                                 <a class="nav-link" href={{ url_for('logout') }}>
                                      <span class="no-icon">Log out</span>
                                  </a>
                              </li>

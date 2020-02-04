@@ -35,43 +35,43 @@
                  </div>
                  <ul class="nav" style="pointer-events: none;opacity: 0.6;">
                      <li class="nav-item">
-                         <a class="nav-link" href="/alumni/dashboard">
+                         <a class="nav-link" href={{ url_for('dashboardalumni') }}>
                              <i class="fa fa-tachometer"></i>
                              <p>Dashboard</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/alumni/profile">
+                         <a class="nav-link" href={{ url_for('alumniprofile') }}>
                              <i class="fa fa-user"></i>
                              <p>User Profile</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/alumni/donation">
+                         <a class="nav-link" href={{ url_for('aldonatecollegedevlp') }}>
                              <i class="fa fa-usd"></i>
                              <p>Donate</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/alumni/tablealumni">
+                         <a class="nav-link" href={{ url_for('table') }}>
                              <i class="fa fa-tasks"></i>
                              <p>Schedules</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href={{ url_for('notfound') }}>
                              <i class="fa fa-user"></i>
                              <p>Requests</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href={{ url_for('notfound') }}>
                              <i class="fa fa-briefcase"></i>
                              <p>Job</p>
                          </a>
                      </li>
                      <li>
-                         <a class="nav-link" href="/notfound">
+                         <a class="nav-link" href={{ url_for('notfound') }}>
                              <i class="fa fa-calendar"></i>
                              <p>Events</p>
                          </a>
@@ -89,7 +89,7 @@
                          <ul class="navbar-nav ml-auto">
                              
                              <li class="nav-item">
-                                 <a class="nav-link" href="/logout">
+                                 <a class="nav-link" href={{ url_for('logout') }}>
                                      <span class="no-icon">Log out</span>
                                  </a>
                              </li>
