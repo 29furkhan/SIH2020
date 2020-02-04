@@ -82,11 +82,15 @@ def aluminiprofile():
 
 @app.route('/alumni/www.facebook.com')
 def alumnifacebook():
-    return redirect("https://www.facebook.com",code=302)
+    return redirect("https://www.facebook.com/mgmcen/",code=302)
 
 @app.route('/alumni/www.twitter.com')
 def alumnitwitter():
     return redirect("https://www.twitter.com",code=302)
+
+@app.route('/alumni/www.insta.com')
+def alumniinsta():
+    return redirect("https://www.instagram.com/visiotech_16/?hl=en",code=302)
 
 @app.route('/alumni/www.google.com')
 def alumnigoogle():
