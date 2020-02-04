@@ -1,0 +1,157 @@
+<html>
+
+<head>
+  <title>Govt. of GOA</title>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/static/IMG/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/static/CSS/styles.css">
+  <script src="/static/JS/main.js"></script>
+  
+  
+</head>
+
+<body>
+	<nav style="font-weight:600;display:flex;justify-content:space-between;background-image: linear-gradient(to right top, #d16ba5, #ca6eb3, #c073c0, #b378cd, #a37ed9, #9883e0, #8b89e7, #7d8eed, #7694f1, #6e9af5, #679ff8, #5fa5fb);">
+		<div style="margin-left:30px;">
+				<a class="navbar-brand" href="#">
+					<img width="18%" src="/static/IMG/logo.png" alt="">
+					<span style="margin-left:10px;font-family:courier new;color:black;">Govt. of GOA</span>
+				</a>
+		</div>
+		
+		<div style="margin-top:40px;	margin-right:40px;">
+			<a href="https://www.facebook.com/mgmcen/"rel="tooltip" title="Like us on Facebook!" style="text-decoration: table-row;" target="_blank"><img  src="/static/IMG/fb.png" alt="">	</a>
+      <a href="https://www.facebook.com/mgmcen/"rel="tooltip" title="Follow us on Twitter!" style="text-decoration: table-row;" target="_blank"><img  style="margin-left:10px;" src="/static/IMG/twitter.png" alt="">	</a>
+      <a href="https://www.facebook.com/mgmcen/"rel="tooltip" title="Follow us on Instagram!" style="text-decoration: table-row;" target="_blank"><img  style="margin-left:10px;" src="/static/IMG/insta.png" alt="">	</a>
+      <a href="https://www.facebook.com/mgmcen/"rel="tooltip" title="Follow us on LinkedIn!" style="text-decoration: table-row;" target="_blank"><img  style="margin-left:10px;" src="/static/IMG/in.png" alt="">	</a>      	
+		</div>
+    </nav>
+    <center>
+         <div style="margin-top:50px;">   
+            <div class="card shadowforcards" style="width:40rem;">
+                  <div class="card-body">
+                    <div class="errors">
+                      {% for message in get_flashed_messages() %}
+                        <div class=flash>{{ message }}</div>
+                      {% endfor %}
+                    </div>
+                      <img style="width:12%;" src="/static/IMG/logo.png"/>
+                      <hr><br>
+                      <form action="/" method="post">
+                        <div style="border:0px;display:flex;justify-content: space-between;white-space:nowrap;">
+                          <div>
+                            <b>LOGIN AS</b>
+                          </div>
+                        
+                          <div>
+                            <select id="usertype" name="usertype" onchange="getUserType(id);" style="width:20rem;height:3rem;">
+                              <option selected disabled>Select User</option> 
+                              <option value="DHE">Directoate of Higher Education</option>
+                              <option value="DIR">Director</option>
+                              <option value="alumni">Alumni</option>
+                              <option value="student">Student</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- 2. New Input -->
+                        <!-- <br> -->
+                        <div id='university' style="border:0px;margin-top: 5%;display:none;justify-content: space-between;white-space:nowrap;">
+                          <div>
+                            <b>SELECT UNIVERSITY/COLLEGE</b>
+                          </div>
+      
+                          <div>
+                            <select id="universityselect" name="universityselect" onchange="getUniversityOrCollege(id);" style="width:20rem;height:3rem;">
+                              <option selected disabled >Select University/ College</option> 
+                              <option value="SRTMU">SRTMU, Nanded</option>
+                              <option value="">SGGS, Nanded</option>
+                              <option value="">MIT Aurangabad</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- <br> -->
+                        <div id="clg" style="border:0px;margin-top: 5%;display:none;justify-content: space-between;white-space:nowrap;">
+                          <div>
+                            <b>SELECT COLLEGE</b>
+                          </div>
+      
+                          <div>
+                            <select id="clgselect" name="clgselect" onchange="getCollege(id);" style="width:20rem;height:3rem;">
+                              <option selected disabled>Select College</option> 
+                              <option value="">MGM's College of Engineering</option>
+                              <option value="">Gramin College of Engineering, Nanded</option>
+                              <option value="">Matroshi Pratishthan, Nanded</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <!-- <br> -->
+                        <div id="email" name="email" style="border:0px;margin-top: 5%;display:none;justify-content: space-between;white-space:nowrap;">
+                          <div>
+                            <b>ENTER EMAIL</b>
+                          </div>
+      
+                          <div>
+                            <input name="email" placeholder="Enter Email" style="width:20rem;height:3rem;" type="email"  id="emaildhe">
+                          </div>
+                        </div>
+
+                        <!-- <br> -->
+                        
+
+                        <!-- <br> -->
+                        <div id="prn"  style="border:0px;margin-top: 5%;display:none;justify-content: space-between;white-space:nowrap;">
+                          <div>
+                            <b>ENTER PRN</b>
+                          </div>
+      
+                          <div>
+                            <input name="prn" placeholder="Enter PRN/ELIGIBILTY NO" style="width:20rem;height:3rem;" type="text" name="prn" id="prn">
+                          </div>
+                        </div>
+
+                        <div id="password" style="border:0px;margin-top: 5%;display:none;justify-content: space-between;white-space:nowrap;">
+                          <div>
+                            <b>ENTER PASSWORD</b>
+                          </div>
+      
+                          <div>
+                            <input placeholder="Enter Password" style="width:20rem;height:3rem;" type="password" name="password" id="password">
+                          </div>
+                        </div>
+
+                        <!-- <br> -->
+                                          
+                        <div id="loginbtn" style="border:0px;margin-top: 5%;display:none;justify-content: space-between;white-space:nowrap;"> 
+                            
+                          <div>
+                            &nbsp
+                          </div>
+                          
+                          
+                          <div>
+                            <input style="width:7rem;height:3rem;" class="btn btn-primary" type="submit" name="" value="LOGIN" id="">
+                          </div>
+
+                          <div>
+                            &nbsp
+                          </div>
+
+                        </div>
+
+                    </div>
+
+                  </form>
+              </div>
+
+            </div>
+        </div>
+    </center>
+
+</body>
+</html>
