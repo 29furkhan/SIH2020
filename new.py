@@ -7,6 +7,7 @@ from flask import flash
 from flask_login import LoginManager
 from flask_login import UserMixin
 from flask_login import login_user
+from flask import session
 
 app = Flask(__name__)
  
@@ -56,25 +57,32 @@ class AspirantLogin(db.Model,UserMixin):
 # Alumni Track Table
 class AlumniTrack(db.Model):
     __tablename__="alumni_details"
-    PRN = db.Column(db.Integer,primary_key=True)
+    PRN = db.Column(db.String(80),primary_key=True)
     Name=db.Column(db.String(30))
     Year= db.Column(db.Integer,nullable=False)
     Branch= db.Column(db.String(40),nullable=True)
     Specialization= db.Column(db.String(40),nullable=True)
-    Work_Ex=db.Column(db.String(20),nullable=True)
-    College=db.Column(db.String(20),nullable=True)
+    Work_Ex=db.Column(db.String(80),nullable=True)
+    College=db.Column(db.String(80),nullable=True)
 
 # Student Track Table
 class StudentTrack(db.Model):
     __tablename__="student_details"
-    PRN = db.Column(db.Integer,primary_key=True)
+    PRN = db.Column(db.String(60),primary_key=True)
     Name=db.Column(db.String(30))
     Year= db.Column(db.Integer,nullable=False)
     Alumni =db.Column(db.String(30))
 
+# TABLE FOR REQUESTS
+class Requests(db.Model):
+    __tablename__="requests"
+    id = db.Column(db.Integer,primary_key=True)
+    Name = db.Column(db.String(60))
+    PRN =  db.Column(db.String(60))
+    
 # Routes Addes By Prashant
 @app.route('/director/trackstudent')
-@login_required
+
 def trackstudents():
     student=StudentTrack.query.all()
     return render_template("pages/DIR/directortrackstudents.html",student=student)
@@ -176,6 +184,7 @@ def login():
             flash("Invalid Email or Password")
             return redirect(url_for('login'))
         login_user(user)
+        session['key']="DHE"
         return redirect(url_for("trackalumni1"))
     # Director Login    
     elif usertype=="DIR":
@@ -186,6 +195,7 @@ def login():
             flash("Invalid Email or Password")
             return redirect(url_for('login'))
         login_user(user)
+        session['key']="Director"
         return redirect(url_for("dashboarddirector"))
 
     # Alumni
@@ -196,15 +206,25 @@ def login():
         university = request.form.get('universityselect')
 
         user = AspirantLogin.query.filter_by(prn = prn).first()
+        print(prn,password,clg,university)
+        print(user.prn,user.password,user.clg,user.university)
         if user.type=="student" or user.type=="pending":
             if not user or (password!=user.password) or university!=user.university or clg!=user.clg:
+                print("Entered")
                 flash("Invalid Details")
                 return redirect(url_for('login'))
             else:
+                if user.type == "student":
+                    data = db.engine.execute("SELECT s.name,s.prn from aspirant_login a INNER JOIN student_details s where a.PRN=s.PRN and a.prn={}".format(prn))
+                    
+                    for i in data:
+                        db.session.add(Requests(Name=i[0],PRN=i[1]))
+                        break
+                    
                 user.type="pending"
                 db.session.commit()
                 login_user(user)
-                return redirect(url_for("dashboardalumnidisabled"))
+                return render_template("pages/alumni/dashboardalumni_disabled.html")
 
         elif user.type=="alumni":
             if not user or (password!=user.password) or university!=user.university or clg!=user.clg or usertype!=user.type:
@@ -212,7 +232,7 @@ def login():
                 return redirect(url_for('login'))
         
             login_user(user)
-            return redirect(url_for("dashboardalumni"))
+            return render_template("pages/alumni/dashboardalumni.html")
 
     # Student
     elif usertype=="student":
@@ -222,13 +242,28 @@ def login():
         university = request.form.get('universityselect')
 
         user = AspirantLogin.query.filter_by(prn = prn).first()
-        print(user.prn,user.password,user.university,user.clg,user.type)
-        print(prn,password,university,clg,usertype)
-        if not user or (password!=user.password) or university!=user.university or clg!=user.clg or usertype!=user.type:
-            flash("Invalid Details")
-            return redirect(url_for('login'))
-        login_user(user)
-        return redirect(url_for("alumnistudentprofile"))
+        # print(user.prn,user.password,user.university,user.clg,user.type)
+        # print(prn,password,university,clg,usertype)
+        if clg is None:
+            if not user or (password!=user.password) or university!=user.clg or usertype!=user.type:
+                print("entered")
+                flash("Invalid Details")
+                return redirect(url_for('login'))
+            else:
+                # print("PRashant")
+                login_user(user)
+                return render_template("pages/student/studentprofile.html")
+        else:
+            if not user or (password!=user.password) or university!=user.university or clg!=user.clg or usertype!=user.type:
+                flash("Invalid Details")
+                return redirect(url_for('login'))
+            else:
+                print("Furkhan MGM")
+                login_user(user)
+                return redirect(url_for("schedulesstudents"))
+        print(user)
+        
+        
             
 
         
@@ -243,10 +278,12 @@ def schedulesstudents():
 
 
 @app.route('/alumni/dashboard')
+@login_required
 def dashboardalumni():
     return render_template("pages/alumni/dashboardalumni.html")
 
 @app.route('/alumni/dashboard_disabled')
+@login_required
 def dashboardalumnidisabled():
     return render_template("pages/alumni/dashboardalumni_disabled.html")
 
@@ -272,14 +309,16 @@ def aluminiprofile():
     return render_template("pages/alumni/profile.html")
 
 @app.route('/alumni/www.facebook.com')
-@login_required
 def alumnifacebook():
-    return redirect("https://www.facebook.com",code=302)
+    return redirect("https://www.facebook.com/mgmcen/",code=302)
 
 @app.route('/alumni/www.twitter.com')
-@login_required
 def alumnitwitter():
     return redirect("https://www.twitter.com",code=302)
+
+@app.route('/alumni/www.insta.com')
+def alumniinsta():
+    return redirect("https://www.instagram.com/visiotech_16/?hl=en",code=302)
 
 @app.route('/alumni/www.google.com')
 def alumnigoogle():
@@ -308,14 +347,15 @@ def managefunddirector():
 @app.route('/director/authentication')
 @login_required
 def authentication():
-    return render_template("pages/DIR/authentication.html")
+    dt = Requests.query.all()
+    return render_template("pages/DIR/authentication.html",data = dt)
 
     
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('mainpage'))
 
 @app.route("/alumni/authenticate",methods=['GET','POST'])
 def authenticate():
@@ -323,7 +363,13 @@ def authenticate():
         val = request.get_data('data')
         # return val
         user = AspirantLogin.query.filter_by(prn = val).first()
+        print("Type class of User ",type(user))
+        print("Type of User",user.type)
         user.type="alumni"
+        print("PRN",user.prn)
+        db.session.commit()
+        dt = Requests.query.filter_by(PRN=val).first()
+        db.session.delete(dt)
         db.session.commit()
         return "Alumni Approved"
 
@@ -337,7 +383,13 @@ def reject():
         db.session.commit()
         return "Request Rejected"
 
+@app.route('/mainpage')
+def mainpage():
+    return render_template("mainpage.html")
 
-
+@app.route("/tmp")
+def tmp():
+    return render_template("tmp.html")
+    
 if __name__=='__main__':
     app.run(debug=True)

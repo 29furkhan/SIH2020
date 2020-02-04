@@ -4,6 +4,10 @@ function clickFilters(id){
     document.getElementById(id).style.display = "block";
 }
 
+function pay(){
+    location.replace("https://p-y.tm/2-3Vlwp");
+}
+
 function getUserType(id){
     type = document.getElementById(id).value;
 

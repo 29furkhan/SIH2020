@@ -1,3 +1,4 @@
+{% if session.get('key') == "Director" %}
 {% extends "layouts/DIR/commonlayoutdirector.html" %}
 {% block heading %}
 Track Students
@@ -21,7 +22,7 @@ Track Students
                             </div>
                         </div>
                     </div><br>
-                    <div class="card-body" style="display:flex;justify-content: space-between;margin-left: 3%;">
+                    <div class="card-body" style="display:flex;justify-content: space-between;margin-left: 5%;">
                         <form class="row" action="/director/trackstudent" method="POST">
                         <div>
                             <select name="year" id="year" style="width:10rem;height:2rem;margin-right: 20px;">
@@ -37,7 +38,6 @@ Track Students
                         <div>
                             <select name="alumni" id="alumni"  style="width:10rem;height:2rem;margin-right: 20px;">
                                 <option selected disabled>ASSOCIATED ALUMNI</option> 
-                                <option >ALL</option>
                                 <option >Sangamesh Somawar</option>
                                 <option >Rohit Bandawar Security</option>
                                 <option >Juned Khan</option>
@@ -92,3 +92,6 @@ Track Students
 
 <!-- Search Box End -->  
 {% endblock %}
+{% else %}
+<center><h1>You are Not an Authorized User !</h1></center>
+{% endif %}

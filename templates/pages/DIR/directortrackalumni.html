@@ -1,3 +1,4 @@
+{% if session.get('key') == "Director" %}
 {% extends "layouts/DIR/commonlayoutdirector.html" %}
 {% block heading %}
 Track Alumni
@@ -21,16 +22,15 @@ Track Alumni
                             </div>
                         </div>
                     </div><br>
-                    <div class="card-body " style="display:flex;justify-content: space-between;margin-left: 3%;">
+                    <div class="card-body " style="display:flex;justify-content: space-between;margin-left: 5%;">
                         <form class="row" action="/director/trackalumni" method="POST">
                         <div >
                             <select name="year" id="year"  style="width:7rem;height:2rem;margin-right: 20px;">
                                 <option selected disabled>Select Year</option> 
-                                <option>2005</option>
-                                <option >2006</option>
-                                <option >2008</option>
-                                <option >2013</option>
-                                
+                                <option>2017</option>
+                                <option >2018</option>
+                                <option >2019</option>
+                                <option >2016</option>
                             </select>
                         </div>
 
@@ -41,7 +41,6 @@ Track Alumni
                                 <option >Information Technology</option>
                                 <option >Civil Engineering</option>
                                 <option >Mechanical Engineering</option>
-                                <option >Electronics Engineering</option>
                             </select>
                         </div>
                         <div >
@@ -49,24 +48,17 @@ Track Alumni
                                 <option selected disabled>Specialization</option> 
                                 <option>IOT</option>
                                 <option >Artificial intelligence</option>
-                                <option >Machine Learning</option>
-                                <option >Front-End Devloper</option>
-                                <option >Back-End Devloper</option>
-                                <option >BLSI</option>
-                                <option >Auto CAD</option>
-                                
+                                <option >Full Stack Web Development</option>
+                                <option>Machine Learning</option>    
                             </select>
                         </div>
                         <div >
                             <select name="work-ex" id="work-ex" style="width:10rem;height:2rem;margin-right: 20px;">
                                 <option selected disabled>Work Experience</option> 
-                                <option>1 Years</option>
                                 <option >2 Years</option>
                                 <option >3 Years</option>
                                 <option >4 Years</option>
-                                <option >5 Years</option>
-                                <option >10 Years</option>
-                                
+                                <option >5 Years</option>                  
                             </select>
                         </div>
                         <div >
@@ -119,3 +111,6 @@ Track Alumni
 
 <!-- Search Box End -->  
 {% endblock %}
+{% else %}
+<center><h1>You are Not an Authorized User !</h1></center>
+{% endif %}

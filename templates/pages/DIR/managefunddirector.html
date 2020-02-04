@@ -1,3 +1,4 @@
+{% if session.get('key') == "Director" %}
 {% extends "layouts/DIR/commonlayoutdirector.html" %}
 
 {% block heading%}
@@ -90,3 +91,6 @@ document.getElementById(id).style.borderColor="blue";
 
 
 {% endblock %}
+{% else %}
+<center><h1>You are Not an Authorized User !</h1></center>
+{% endif %}

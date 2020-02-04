@@ -5,6 +5,14 @@
 {% endblock %} 
 
 {% block content %}
+<script>
+  
+    function pay(){
+        location.replace("https://p-y.tm/Fps2-1O");
+    }
+
+</script>
+
 <div class="row" style="margin-top: 3%;">
   <div class="col-md-5" style="margin-left: 3%;">
     <div class="card shadowforcards" style="display:flex;justify-content:space-between;background-image: linear-gradient(to bottom, #b56bd1, #ae71d6, #a776db, #a07bdf, #9980e3, #967fe6, #937fea, #8f7eed, #9077f1, #9270f5, #9568f8, #995ffb);border:2px solid black;">
@@ -14,7 +22,7 @@
       <!-- <hr> -->
       <div class="card-body">
         <h3 class="card-title">College Developement</h3><br>
-        <button onmouseout="hoverOut(id);" id="btn1" onmouseover="hoverOver(id);" class="btn btn-primary" style="border-color: white;color: white;">Donate</button>
+        <button onmouseout="hoverOut(id);" id="btn1" onmouseover="hoverOver(id);" onclick="pay();" class="btn btn-primary" style="border-color: white;color: white;">Donate</button>
       </div>
     </div>
   </div>
@@ -27,7 +35,7 @@
         <!-- <hr> -->
         <div class="card-body">
           <h3 class="card-title">Student Scholership</h3><br>
-          <button onmouseout="hoverOut(id);" id="btn2" onmouseover="hoverOver(id);" class="btn btn-primary" style="border-color: white;color: white;">Donate</button>
+          <button onmouseout="hoverOut(id);" id="btn2" onmouseover="hoverOver(id);" onclick="pay();" class="btn btn-primary" style="border-color: white;color: white;">Donate</button>
         </div>
         <!-- <hr> -->
       </div>
