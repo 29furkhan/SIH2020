@@ -52,6 +52,114 @@ class AspirantLogin(db.Model,UserMixin):
     university = db.Column(db.String(60),nullable=True)
     clg = db.Column(db.String(60),nullable=True)
 
+# Added By Prashant .. Track Alumni/Student Starts here
+# Alumni Track Table
+class AlumniTrack(db.Model):
+    __tablename__="alumni_details"
+    PRN = db.Column(db.Integer,primary_key=True)
+    Name=db.Column(db.String(30))
+    Year= db.Column(db.Integer,nullable=False)
+    Branch= db.Column(db.String(40),nullable=True)
+    Specialization= db.Column(db.String(40),nullable=True)
+    Work_Ex=db.Column(db.String(20),nullable=True)
+    College=db.Column(db.String(20),nullable=True)
+
+# Student Track Table
+class StudentTrack(db.Model):
+    __tablename__="student_details"
+    PRN = db.Column(db.Integer,primary_key=True)
+    Name=db.Column(db.String(30))
+    Year= db.Column(db.Integer,nullable=False)
+    Alumni =db.Column(db.String(30))
+
+# Routes Addes By Prashant
+@app.route('/director/trackstudent')
+@login_required
+def trackstudents():
+    student=StudentTrack.query.all()
+    return render_template("pages/DIR/directortrackstudents.html",student=student)
+
+@app.route('/director/trackstudent',methods=['GET','POST'])
+def trackstudents1():
+    name=request.form.get('name')
+    year=request.form.get('year')
+    alumni=request.form.get('alumni')
+    print(year,alumni,name)
+    if(year!=None and alumni!=None):
+        alumni=alumni.upper()
+        student=StudentTrack.query.filter_by(Year=year,Alumni=alumni).all()
+    elif(year!=None):
+        student=StudentTrack.query.filter_by(Year=year).all()
+    elif(alumni!=None):
+        alumni=alumni.upper()
+        student=StudentTrack.query.filter_by(Alumni=alumni).all()
+    elif(alumni==None and year==None):
+        student=StudentTrack.query.all()
+    
+    return render_template("pages/DIR/directortrackstudents.html",student=student)
+
+
+@app.route('/DHE/trackalumni')
+@login_required
+def trackalumni1():
+    alumni=AlumniTrack.query.all()
+    return render_template("pages/DHE/dhetrackalumni.html",alumni=alumni)
+
+@app.route('/DHE/trackalumni',methods=['GET','POST'])
+def trackalumni13():
+    college=request.form.get('college')
+    if(college!=None):
+        alumni=AlumniTrack.query.filter_by(College=college).all()
+    else:
+        alumni=AlumniTrack.query.all()
+    return render_template("pages/DHE/dhetrackalumni.html",alumni=alumni)
+   
+@app.route('/director/trackalumni')
+def trackalumni():
+    alumni=AlumniTrack.query.all()
+    return render_template("pages/DIR/directortrackalumni.html",alumni=alumni)
+
+@app.route('/director/trackalumni',methods=['GET','POST'])
+def trackalumni12():
+    year =  request.form.get('year')
+    branch =  request.form.get('branch')
+    specialization =  request.form.get('specialization')
+    work_ex =  request.form.get('work-ex')
+    if(year!=None and branch !=None and specialization !=None and work_ex !=None):
+        alumni=AlumniTrack.query.filter_by(Year=year,Branch=branch,Specialization=specialization,Work_Ex=work_ex).all()
+    elif(year!=None and branch!=None and specialization!= None ):
+        alumni=AlumniTrack.query.filter_by(Year=year,Branch=branch, Specialization=specialization).all()
+    elif (branch!=None and specialization!= None and work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Branch=branch,Specialization=specialization,Work_Ex=work_ex).all()
+    elif (year!=None and branch!=None and work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Year=year,Branch=branch,Work_Ex=work_ex).all()
+    elif (year!=None and specialization!= None and work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Year=year,Specialization=specialization,Work_Ex=work_ex).all()
+    elif(year!=None and branch!=None):
+        alumni=AlumniTrack.query.filter_by(Year=year,Branch=branch).all()
+    elif(year!=None and specialization!=None):
+        alumni=AlumniTrack.query.filter_by(Year=year,Specialization=specialization).all()
+    elif(branch!=None and work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Branch=branch,Work_Ex=work_ex).all()
+    elif(branch!=None and specialization!=None):
+        alumni=AlumniTrack.query.filter_by(Branch=branch,Specialization=specialization).all()
+    elif(specialization!=None and work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Specialization=specialization,Work_Ex=work_ex).all()
+    elif(branch!=None and work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Branch=branch,Work_Ex=work_ex).all()
+    elif(year!=None):
+        alumni=AlumniTrack.query.filter_by(Year=year).all()
+    elif (branch!=None):
+        alumni=AlumniTrack.query.filter_by(Branch=branch).all()
+    elif (specialization!=None):
+        alumni=AlumniTrack.query.filter_by(Specialization=specialization).all()
+    elif (work_ex!=None):
+        alumni=AlumniTrack.query.filter_by(Work_Ex=work_ex).all()
+    elif (year==None and branch==None and specialization==None and work_ex==None):
+        alumni=AlumniTrack.query.filter_by().all()
+    print(year,branch,specialization,work_ex)
+    return render_template("pages/DIR/directortrackalumni.html",alumni=alumni)
+# ENds Here
 
 @app.route('/')
 def login_normal():
@@ -124,18 +232,6 @@ def login():
             
 
         
-
-
-@app.route('/DHE/trackalumni')
-@login_required
-def trackalumni1():
-    return render_template("pages/DHE/dhetrackalumni.html")
-   
-@app.route('/director/trackalumni')
-@login_required
-def trackalumni():
-    return render_template("pages/DIR/directortrackalumni.html")
-
 @app.route('/notfound')
 def notfound():
     return render_template("/index.html")
@@ -208,11 +304,6 @@ def table():
 @login_required
 def managefunddirector():
     return render_template("pages/DIR/managefunddirector.html")
-
-@app.route('/director/trackstudent')
-@login_required
-def trackstudents():
-    return render_template("pages/DIR/directortrackstudents.html")
 
 @app.route('/director/authentication')
 @login_required

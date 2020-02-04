@@ -14,7 +14,7 @@ Track Students
                         <div style="width:80%;margin-top: 5%;margin-left: 5%;" id="searchprocess" class="">
                             <div class="">
                             <div class="search" style="border:2px solid black;box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important;">
-                                <input id="processsearch" style="background:transparent;border-radius:5px 0 0 5px;" type="text"   class="searchTerm"   placeholder="Search By Name or PRN_ID">
+                                <input name="name" id="processsearch" style="background:transparent;border-radius:5px 0 0 5px;" type="text"   class="searchTerm"   placeholder="Search By Name or PRN_ID">
                                 <a href="javascript:void(0);" id="processbutton" class="fa fa-search" style="background:transparent;cursor:pointer;text-decoration:none;margin-right: 5%;padding:5px;border-radius:0 5px 5px 0;font-size:20px;color: black;">
                                 </a>
                             </div>
@@ -22,19 +22,20 @@ Track Students
                         </div>
                     </div><br>
                     <div class="card-body" style="display:flex;justify-content: space-between;margin-left: 3%;">
+                        <form class="row" action="/director/trackstudent" method="POST">
                         <div>
-                            <select style="width:10rem;height:2rem;">
+                            <select name="year" id="year" style="width:10rem;height:2rem;margin-right: 20px;">
                                 <option selected disabled>SELECT YEAR</option> 
-                                <option>ALL</option>
-                                <option >2019</option>
+                                <option>2017</option>
                                 <option >2018</option>
-                                <option >2017</option>
+                                <option >2019</option>
+                                <option >2020</option>
                                 
                             </select>
                         </div>
 
                         <div>
-                            <select style="width:10rem;height:2rem;">
+                            <select name="alumni" id="alumni"  style="width:10rem;height:2rem;margin-right: 20px;">
                                 <option selected disabled>ASSOCIATED ALUMNI</option> 
                                 <option >ALL</option>
                                 <option >Sangamesh Somawar</option>
@@ -44,15 +45,16 @@ Track Students
                             </select>
                         </div>
                         <div >
-                            <button style="border:2px solid black;color:black;padding: 5px;width: 5rem;"class="btn btn-primary" onclick="clickFilters('filterrow');">Search</button>
+                            <button style="border:2px solid black;color:black;padding: 5px;width: 5rem;"class="btn btn-primary" type="submit">Search</button>
                         </div>
+                        </form>
                         <div></div>
                         <div>&nbsp</div>
                     </div>
                 </div>         
             </div>
         </div>
-        <div class="row" id="filterrow" style="display: none;">
+        <div class="row" id="filterrow" >
             <!-- card 1 start -->
             <div class="col-md-12" style="margin-left: 0%;">
                 <div class="card shadowforcards">
@@ -70,48 +72,16 @@ Track Students
                             </thead>
                             <tbody> 
                                 
+                                {% for x in student %}
+                                    <tr>
+                                    <td>{{x.PRN}}</td>
+                                    <td>{{x.Name}}</td>
+                                    <td>{{x.Year}}</td>
+                                    <td>{{x.Alumni}}</td>
+                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
                                 <tr>
-                                    <td>S1032170390</td>
-                                    <td>Furkhan Shaikh</td>
-                                    <td>2020</td>
-                                    <td style="font-weight:600;color:black;">Sangamesh Somawar</td>
-                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>S1032170390</td>
-                                    <td>Furkhan Shaikh</td>
-                                    <td>2020</td>
-                                    <td style="font-weight:600;color:black;">Sangamesh Somawar</td>
-                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>S1032170390</td>
-                                    <td>Furkhan Shaikh</td>
-                                    <td>2020</td>
-                                    <td style="font-weight:600;color:black;">Sangamesh Somawar</td>
-                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>S1032170390</td>
-                                    <td>Furkhan Shaikh</td>
-                                    <td>2020</td>
-                                    <td style="font-weight:600;color:black;">Sangamesh Somawar</td>
-                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>S1032170390</td>
-                                    <td>Furkhan Shaikh</td>
-                                    <td>2020</td>
-                                    <td style="font-weight:600;color:black;">Sangamesh Somawar</td>
-                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
-                                </tr>
-                                 <tr>
-                                    <td>S1032170390</td>
-                                    <td>Furkhan Shaikh</td>
-                                    <td>2020</td>
-                                    <td style="font-weight:600;color:black;">Sangamesh Somawar</td>
-                                    <td><button class="btn btn-primary"><i class="fa fa-user"></i></button></td>
-                                </tr>
+                                    {% endfor %}
+                               
                             </tbody>
                         </table>
                     </div>
